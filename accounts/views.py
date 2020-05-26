@@ -45,3 +45,9 @@ def edit_user(request):
         profile_form = forms.ProfileForm(instance=profile)
     return render(request, 'accounts/edit_user.html', {'user_form': user_form,
                                                        'profile_form': profile_form})
+
+
+@login_required
+def dash_bord(request):
+    profile = models.Profile.objects.get(user=request.user)
+    return render(request, 'accounts/dashbord.html')
